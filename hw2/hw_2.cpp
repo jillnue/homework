@@ -13,6 +13,10 @@ int main(){
 	int interation;
 	cout << "Please enter the number of interations for the simulation: "<<endl;
 	cin >> interation;
+    if (interation <=0){
+        cout<<"Please enter a positive integer: "<<endl;
+        cin >> interation;
+    }
 	srand(time(0));
 	
 
