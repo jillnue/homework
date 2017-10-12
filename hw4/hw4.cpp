@@ -19,10 +19,11 @@ void print (int mylist[ ], int num_in_list);
 
 int main()
 {
-//initialize some variables
-    const int MAX_NUM_OF_BOOKS = 20;//Assume no more than 20 books are going to be bought
-    int mylist[MAX_NUM_OF_BOOKS];
-    int num_in_list = 0;
+	//initialize some variables
+	const int MAX_NUM_OF_BOOKS = 20;//Assume no more than 20 books are going to be bought
+	int mylist[MAX_NUM_OF_BOOKS];
+	int num_in_list = 0;
+	bool sorted = false;
 
 	cout << "Welcome to the Book list program."<<endl;
 	bool not_quit = true;
@@ -54,6 +55,7 @@ int main()
                     else
                         cout <<" You already have 20 books on the list!"<<endl;
                     print(mylist,num_in_list);
+		    sorted = false;
                     break;
             case 2: int at_position;
                     cout << "Please type in the element"<<endl;
@@ -68,6 +70,7 @@ int main()
                     insert_at(mylist, num_in_list, at_position,new_element);
                     num_in_list++;
                     print(mylist,num_in_list);
+		    sorted = false;
                     break;
             case 3: int element;
                     cout << "Please enter the ISBN number that you want to find"<<endl;
@@ -79,7 +82,17 @@ int main()
                     if (position == 1000)
                         cout <<"The book with ISBN " <<element <<" is not in the list."<<endl;
                     break;
-            case 4:
+            case 4: cout << "Please enter the ISBN number that you want to find"<<endl;
+		    cin >>element;
+		    position = find_binary(mylist,num_in_list,element, sorted);
+                    if (position !=1000 && position !=-1)
+                        cout << "The book with ISBN " << element<<" is in position "<< position <<"."<<endl;
+                    if (position == 1000)
+                        cout <<"The book with ISBN " <<element <<" is not in the list."<<endl;
+		    if (position ==-1)
+			cout << "The list needs to be sorted first before performing binary search"<<endl;
+                    break;
+
             case 5: cout << "Which element would you like to delete (by position)?"<<endl;
                     int del_position;
                     cin >> del_position;
@@ -98,14 +111,20 @@ int main()
                     while (find_linear(mylist,num_in_list,del_element)==1000){
                         cout << "The element you entered is not on the list."<<endl;
                         cout << "Please enter another element"<<endl;
-                        cin >> del_position;
+                        cin >> del_element;
                     }
                     delete_item_isbn(mylist, num_in_list, del_element);
                     num_in_list--;
                     print(mylist,num_in_list);
                     break;
-            case 7:
-            case 8:
+            case 7: sort_list_selection(mylist, num_in_list);
+		    print(mylist,num_in_list);
+		    sorted = true;
+		    break;
+            case 8: sort_list_bubble(mylist, num_in_list);
+                    print(mylist,num_in_list);
+		    sorted = true;
+                    break;
             case 9: print(mylist,num_in_list);
                     break;
             case 0: not_quit = false;
@@ -152,6 +171,27 @@ int find_linear(int mylist [ ], int num_in_list, int element){
         return 1000;
 }
 
+int find_binary(int mylist [ ], int num_in_list, int element, bool sorted){
+	if (sorted){
+		int low=0;
+		int high=num_in_list-1;
+		int middle;
+		while(low<=high){
+			middle = low+high/2;
+			if (*(mylist+middle) == element)
+				break;
+			if (element <*(mylist+middle))
+				high = middle-1;
+			else
+				low = middle+1;
+		}
+		if (*(mylist+middle) == element)
+			return middle+1;
+		else return 1000;
+	}
+	else return -1;
+}
+
 void delete_item_position(int mylist [ ], int num_in_list, int position){
     for(int i=position-1;i<num_in_list-1;i++){
         *(mylist+i)=*(mylist+i+1);
@@ -162,3 +202,36 @@ void delete_item_isbn(int mylist [ ], int num_in_list, int element){
     int position = find_linear(mylist, num_in_list, element);
     delete_item_position(mylist, num_in_list, position);
 }
+
+void sort_list_selection(int mylist [ ], int num_in_list){
+	for(int i =0;i<num_in_list;i++){
+		int min_index = i;
+		int temp;
+		for(int j = i+1;j<num_in_list;j++){
+			if (*(mylist+j)<*(mylist+min_index))
+				min_index =j;
+		}
+		temp = *(mylist+i);
+		*(mylist+i) = *(mylist+min_index);
+		*(mylist+min_index) = temp;
+	}
+}
+
+void sort_list_bubble(int mylist [ ], int num_in_list){
+	for(int pass =0; pass<num_in_list-1;pass++)
+		for(int j =0;j<num_in_list-1-pass;j++){
+			if(*(mylist+j)>*(mylist+j+1)){
+				int temp = *(mylist+j+1);
+				*(mylist+j+1)=*(mylist+j);
+				*(mylist+j) = temp;
+			}
+		}		
+}
+
+
+
+
+
+
+
+
