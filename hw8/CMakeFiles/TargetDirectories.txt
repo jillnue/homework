@@ -1,0 +1,3 @@
+/home/yni/work/c_files/homework/hw8/CMakeFiles/edit_cache.dir
+/home/yni/work/c_files/homework/hw8/CMakeFiles/rebuild_cache.dir
+/home/yni/work/c_files/homework/hw8/CMakeFiles/hw8.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++14 -g   CMakeFiles/hw8.dir/main_hw8.cpp.o CMakeFiles/hw8.dir/shape.cpp.o CMakeFiles/hw8.dir/TwoDimensionalShape.cpp.o CMakeFiles/hw8.dir/Circle.cpp.o CMakeFiles/hw8.dir/Triangle.cpp.o CMakeFiles/hw8.dir/ThreeDimensionalShape.cpp.o CMakeFiles/hw8.dir/Sphere.cpp.o CMakeFiles/hw8.dir/Tetrahedron.cpp.o  -o hw8 -rdynamic 
