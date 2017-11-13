@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/yni/work/c_files/homework/inclass6/main_1_.cpp
+iostream
+-
+point.h
+/home/yni/work/c_files/homework/inclass6/point.h
+threedimensionalpoint.h
+/home/yni/work/c_files/homework/inclass6/threedimensionalpoint.h
+
+/home/yni/work/c_files/homework/inclass6/point.cpp
+point.h
+/home/yni/work/c_files/homework/inclass6/point.h
+
+/home/yni/work/c_files/homework/inclass6/point.h
+
+/home/yni/work/c_files/homework/inclass6/threedimensionalpoint.cpp
+threedimensionalpoint.h
+/home/yni/work/c_files/homework/inclass6/threedimensionalpoint.h
+
+/home/yni/work/c_files/homework/inclass6/threedimensionalpoint.h
+point.h
+/home/yni/work/c_files/homework/inclass6/point.h
+

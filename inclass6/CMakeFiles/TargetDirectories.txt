@@ -1,0 +1,3 @@
+/home/yni/work/c_files/homework/inclass6/CMakeFiles/edit_cache.dir
+/home/yni/work/c_files/homework/inclass6/CMakeFiles/rebuild_cache.dir
+/home/yni/work/c_files/homework/inclass6/CMakeFiles/inclass6.dir

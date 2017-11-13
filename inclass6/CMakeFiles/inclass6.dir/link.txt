@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++14 -g   CMakeFiles/inclass6.dir/main_1_.cpp.o CMakeFiles/inclass6.dir/point.cpp.o CMakeFiles/inclass6.dir/threedimensionalpoint.cpp.o  -o inclass6 -rdynamic 
