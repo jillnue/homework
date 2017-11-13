@@ -10,12 +10,8 @@ using namespace std;
 
 int main(){
 	
-	cout << "Package delivery services program"<<endl;
-	cout << "\nCost per ounce for a package: $.50/ounce";
-	cout << "\nAdditonal cost for two day delivery: $2.00/ounce";
-	cout << "\nAdditional cost for overnight delivery: $5.00/ounce"<<endl;
 	//initialize the three packages that we will be testing
-	Package package;
+	Package package(0.5);
 	package.set_sender_name("John Smith");
 	package.set_sender_add("1 Davidson Road");
 	package.set_sender_city("Piscataway");
@@ -30,7 +26,7 @@ int main(){
 	//package.print();
 
 
-	TwoDayPackage package1;
+	TwoDayPackage package1(2.0);
         package1.set_sender_name("Mary Smith");
         package1.set_sender_add("3 Davidson Road");
         package1.set_sender_city("Piscataway");
@@ -44,7 +40,7 @@ int main(){
         package1.set_weight(5);
         //package1.print();
 
-   	OverNightPackage package2;
+   	OverNightPackage package2(5.0);
         package2.set_sender_name("John Smith");
         package2.set_sender_add("1 Davidson Road");
         package2.set_sender_city("Piscataway");
@@ -58,6 +54,11 @@ int main(){
         package2.set_weight(2);
         //package2.print();
 
+	cout << "Package delivery services program"<<endl;
+        cout << "\nCost per ounce for a package: $"<<fixed<<setprecision(2)<<package.get_cost_per_ounce() <<"/ounce";
+        cout << "\nAdditonal cost for two day delivery: $"<< package1.get_flat_fee_per_ounce()<<"/ounce";
+        cout << "\nAdditional cost for overnight delivery: $"<<package2.get_flat_fee_per_ounce()<<"/ounce"<<endl;
+
 
 	
 	vector<Package *> package_vector(3);
@@ -66,7 +67,7 @@ int main(){
 	package_vector[2]= &package2;
 	double cost_sum =0;
 	for (int i =0;i<3;i++){
-		cout <<"Package " << i+1<<":"<<endl;
+		cout <<"\n\nPackage " << i+1<<":"<<endl;
 		package_vector[i]->print();
 		cost_sum += package_vector[i]->calculateCost();
 	}

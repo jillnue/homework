@@ -12,7 +12,9 @@ public:
 	OverNightPackage(double = 5.00);
 	virtual void print();
 	virtual double calculateCost();
-
+	double get_flat_fee_per_ounce(){
+		return flat_fee_per_ounce;
+	}
 private:
 	double flat_fee_per_ounce;
 };

@@ -12,6 +12,9 @@ public:
 	TwoDayPackage(double = 2.00);
 	virtual void print();
 	virtual double calculateCost();
+	virtual double get_flat_fee_per_ounce(){
+		return flat_fee_per_ounce;
+	}
 
 private:
 	double flat_fee_per_ounce;

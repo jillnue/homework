@@ -10,7 +10,7 @@ using namespace std;
 
 class Package{
 public:
-	Package();
+	Package(double);
 
 	virtual double calculateCost();
 	virtual void print();
@@ -52,9 +52,9 @@ private:
 
 };
 
-Package::Package(){
+Package::Package(double cost_pounce = 0.5){
 	weight = 0;
-	cost_per_ounce = 0.5;
+	cost_per_ounce = cost_pounce;
 }
 
 double Package::calculateCost(){
